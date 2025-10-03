@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: file: https://fonts.googleapis.com https://fonts.gstatic.com; img-src 'self' data: blob: https: file:; font-src 'self' data: https://fonts.gstatic.com;">
+    <title>Moon Light Villa POS - Web Application</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+      /* Prevent flash of unstyled content */
+      body {
+        background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%);
+        color: #f1f5f9;
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        overflow: hidden;
+      }
+      
+      #root {
+        min-height: 100vh;
+        position: relative;
+      }
+      
+      /* Loading spinner for initial load */
+      .initial-loading {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        background: linear-gradient(135deg, #1e40af 0%, #7c3aed 100%) !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        z-index: 9999 !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+      }
+      
+      .loader {
+        width: 75px !important;
+        aspect-ratio: 1 !important; 
+        display: grid !important;
+        color: white !important;
+      }
+      .loader:before,
+      .loader:after {
+        content: "" !important;
+        grid-area: 1/1 !important;
+        width: 35px !important;
+        aspect-ratio: 1 !important;
+        box-shadow: 0 0 0 3px #fff inset !important;
+        filter: drop-shadow(40px 40px 0 #fff) !important;
+        animation: l8 2s infinite alternate !important;
+      }
+      .loader:after {
+        margin: 0 0 0 auto !important; 
+        filter: drop-shadow(-40px 40px 0 #fff) !important;
+        animation-delay: -1s !important;
+      }
+      @keyframes l8 {
+        0%,10%   {border-radius:0 !important;}
+        30%,40%  {border-radius:50% 0 !important;}
+        60%,70%  {border-radius:50% !important;}
+        90%,100% {border-radius:0 50% !important;}
+      }
+      
+      .loading-text {
+        color: white !important;
+        font-size: 18px !important;
+        font-weight: 600 !important;
+        text-align: center !important;
+        opacity: 0.9 !important;
+      }
+      
+      .loading-logo {
+        width: 80px !important;
+        height: 80px !important;
+        background: rgba(255, 255, 255, 0.2) !important;
+        border-radius: 20px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 40px !important;
+        margin-bottom: 20px !important;
+        backdrop-filter: blur(10px) !important;
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index-20513440.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/vendor-e40c3829.js">
+    <link rel="modulepreload" crossorigin href="/assets/ui-dbc1974f.js">
+    <link rel="modulepreload" crossorigin href="/assets/state-94b156c3.js">
+    <link rel="modulepreload" crossorigin href="/assets/forms-7b901ecc.js">
+    <link rel="stylesheet" href="/assets/index-6e04205f.css">
+  </head>
+  <body>
+    <div id="initial-loading" class="initial-loading">
+      <div class="loading-logo">🏨</div>
+      <div class="loader"></div>
+      <div class="loading-text">
+        <div>Moon Light Villa POS</div>
+        <div style="font-size: 14px; margin-top: 8px; opacity: 0.7;">Loading Application...</div>
+      </div>
+    </div>
+    <div id="root"></div>
+    <script>
+      // Failsafe: Remove loading screen after 10 seconds
+      console.log('Setting up loading screen failsafe');
+      setTimeout(function() {
+        console.log('Failsafe: Removing loading screen after 10 seconds');
+        var loadingElement = document.getElementById('initial-loading');
+        if (loadingElement) {
+          loadingElement.style.opacity = '0';
+          loadingElement.style.transition = 'opacity 0.5s ease-out';
+          setTimeout(function() {
+            if (loadingElement && loadingElement.parentNode) {
+              loadingElement.parentNode.removeChild(loadingElement);
+            }
+          }, 500);
+        }
+      }, 10000);
+      
+      // Remove loading screen when page is fully loaded
+      window.addEventListener('load', function() {
+        console.log('Page loaded, removing loading screen');
+        setTimeout(function() {
+          var loadingElement = document.getElementById('initial-loading');
+          if (loadingElement) {
+            loadingElement.style.opacity = '0';
+            loadingElement.style.transition = 'opacity 0.5s ease-out';
+            setTimeout(function() {
+              if (loadingElement && loadingElement.parentNode) {
+                loadingElement.parentNode.removeChild(loadingElement);
+              }
+            }, 500);
+          }
+        }, 1000);
+      });
+    </script>
+    
+  </body>
+</html>
